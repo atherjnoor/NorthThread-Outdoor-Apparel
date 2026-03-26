@@ -18,9 +18,9 @@ class ProductsController < ApplicationController
     if params[:filter] == 'on_sale'
       @products = @products.where(on_sale: true)
     elsif params[:filter] == 'new'
-      @products = @products.where('created_at >= ?', 7.days.ago)
+      @products = @products.where('products.created_at >= ?', 7.days.ago)
     elsif params[:filter] == 'recently_updated'
-      @products = @products.where('updated_at >= ?', 7.days.ago)
+      @products = @products.where('products.updated_at >= ?', 7.days.ago)
     end
 
     @products = @products.page(params[:page]).per(12)
