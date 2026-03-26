@@ -1,0 +1,20 @@
+Order Confirmation
+
+Thank you for your order, <%= @user.first_name %>!
+
+Order #<%= @order.id %>
+Status: <%= @order.status.upcase %>
+
+Order Items:
+<% @order.order_items.each do |item| %>
+  <%= item.product_name_snapshot %> - <%= item.quantity %> x $<%= item.unit_price_snapshot %>
+<% end %>
+
+Order Total:
+Subtotal: $<%= @order.subtotal %>
+GST: $<%= @order.gst_amount %>
+PST: $<%= @order.pst_amount %>
+HST: $<%= @order.hst_amount %>
+Grand Total: $<%= @order.grand_total %>
+
+View your order: <%= order_url(@order) %>

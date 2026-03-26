@@ -73,6 +73,9 @@ class CheckoutController < ApplicationController
         )
       end
 
+      # Send confirmation email
+      OrderMailer.order_confirmation(order).deliver_later
+
       session[:cart] = {}
       redirect_to order_path(order), notice: 'Order created successfully!'
     else
