@@ -21,18 +21,14 @@ body {
   background-color: $primary-color !important;
   .nav-link {
     color: #f8f9fa !important;
-    &:hover {
-      color: #fee3b3 !important;
-    }
+    &:hover { color: #fee3b3 !important; }
   }
 }
 
 .product-card {
   border-radius: $border-radius;
   box-shadow: 0 0.5rem 1rem rgba(11, 21, 38, 0.12);
-  .card-title {
-    font-size: 1.1rem;
-  }
+  .card-title { font-size: 1.1rem; }
   .btn {
     @extend %btn-style;
     background-color: $secondary-color;
@@ -47,6 +43,4 @@ body {
   border-radius: $border-radius;
 }
 
-.container {
-  max-width: 1200px;
-}
+.container { max-width: 1200px; }

@@ -9,9 +9,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
-require "propshaft"
-require "propshaft/railtie"
-# Do not load sprockets/railtie to keep Propshaft asset pipeline
+require "sprockets/railtie"
+# Use Sprockets pipeline for ActiveAdmin and classic asset helpers
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
