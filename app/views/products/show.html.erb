@@ -1,4 +1,12 @@
 <div class="container py-5">
+  <% breadcrumb_items = [{ label: 'Shop', path: products_path }] %>
+  <% if @product.categories.any? %>
+    <% breadcrumb_items << { label: @product.categories.first.name, path: category_path(@product.categories.first) } %>
+  <% end %>
+  <% breadcrumb_items << { label: @product.name, path: product_path(@product) } %>
+  
+  <%= render_breadcrumbs(breadcrumb_items) %>
+
   <div class="row">
     <div class="col-md-6">
       <% if @product.images.attached? %>
