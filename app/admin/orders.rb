@@ -8,7 +8,16 @@ ActiveAdmin.register Order do
     column :created_at
     column :grand_total
     column :status do |order|
-      status_badge(order.status)
+      case order.status
+      when 'new'
+        tag.span 'NEW', class: 'badge bg-warning'
+      when 'paid'
+        tag.span 'PAID', class: 'badge bg-success'
+      when 'shipped'
+        tag.span 'SHIPPED', class: 'badge bg-info'
+      else
+        tag.span order.status.upcase, class: 'badge bg-secondary'
+      end
     end
     actions
   end
@@ -24,7 +33,16 @@ ActiveAdmin.register Order do
       row :pst_amount
       row :hst_amount
       row :status do |order|
-        status_badge(order.status)
+        case order.status
+        when 'new'
+          tag.span 'NEW', class: 'badge bg-warning'
+        when 'paid'
+          tag.span 'PAID', class: 'badge bg-success'
+        when 'shipped'
+          tag.span 'SHIPPED', class: 'badge bg-info'
+        else
+          tag.span order.status.upcase, class: 'badge bg-secondary'
+        end
       end
       row :address
     end
@@ -44,20 +62,5 @@ ActiveAdmin.register Order do
       f.input :status, as: :select, collection: ['new', 'paid', 'shipped']
     end
     f.actions
-  end
-
-  private
-
-  def status_badge(status)
-    case status
-    when 'new'
-      tag.span 'NEW', class: 'badge bg-warning'
-    when 'paid'
-      tag.span 'PAID', class: 'badge bg-success'
-    when 'shipped'
-      tag.span 'SHIPPED', class: 'badge bg-info'
-    else
-      tag.span status.upcase, class: 'badge bg-secondary'
-    end
   end
 end
