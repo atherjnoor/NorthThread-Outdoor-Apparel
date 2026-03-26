@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class CheckoutController < ApplicationController
   before_action :authenticate_user!
   before_action :load_cart

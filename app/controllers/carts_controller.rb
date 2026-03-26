@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class CartsController < ApplicationController
   before_action :load_cart
 
