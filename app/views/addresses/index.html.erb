@@ -1,0 +1,46 @@
+<div class="container py-5">
+  <h1>My Addresses</h1>
+
+  <div class="mb-3">
+    <%= link_to 'Add New Address', new_address_path, class: 'btn btn-primary' %>
+  </div>
+
+  <% if @addresses.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>City</th>
+          <th>Province</th>
+          <th>Default</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td>
+              <%= address.address_line1 %>
+              <% if address.address_line2.present? %>
+                <br><small><%= address.address_line2 %></small>
+              <% end %>
+            </td>
+            <td><%= address.city %></td>
+            <td><%= address.province.name %></td>
+            <td>
+              <% if address.is_default %>
+                <span class="badge bg-success">Default</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'Edit', edit_address_path(address), class: 'btn btn-sm btn-outline-primary' %>
+              <%= link_to 'Delete', address_path(address), method: :delete, data: { confirm: 'Sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No addresses yet. <%= link_to 'Add one now', new_address_path %>.</p>
+  <% end %>
+</div>
