@@ -18,4 +18,13 @@ class Product < ApplicationRecord
   def display_price
     on_sale ? sale_price : price
   end
+
+  def related_products(limit = 4)
+    Product
+      .joins(:categories)
+      .where(categories: { id: categories.pluck(:id) })
+      .where.not(id: id)
+      .distinct
+      .limit(limit)
+  end
 end
