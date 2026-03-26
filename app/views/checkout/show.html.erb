@@ -1,0 +1,139 @@
+<div class="container py-5">
+  <h1>Checkout</h1>
+
+  <% if @cart_items.empty? %>
+    <p>Your cart is empty. <%= link_to 'Continue shopping', products_path %>.</p>
+  <% else %>
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Order Summary</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Line Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |item| %>
+              <tr>
+                <td><%= item.product.name %></td>
+                <td><%= number_to_currency(item.product.display_price) %></td>
+                <td><%= item.quantity %></td>
+                <td><%= number_to_currency(item.product.display_price * item.quantity) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <h3 class="mt-4">Shipping Address</h3>
+        <%= form_with url: checkout_path, method: :post, local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :province_id, "Province" %>
+            <%= f.collection_select :province_id, @provinces, :id, :name, { prompt: 'Select a province' }, class: 'form-control' %>
+          </div>
+
+          <fieldset class="mb-3">
+            <legend>Address</legend>
+            <% if @user_addresses.any? %>
+              <div class="mb-3">
+                <label>Use existing address:</label>
+                <%= f.collection_select :address_id, @user_addresses, :id, lambda { |a| "#{a.address_line1}, #{a.city}" }, { include_blank: 'Or enter new address below' }, class: 'form-control' %>
+              </div>
+            <% end %>
+
+            <div class="mb-3">
+              <%= f.fields_for :address_attributes do |af| %>
+                <%= af.label :address_line1, "Street Address" %>
+                <%= af.text_field :address_line1, class: 'form-control', placeholder: '123 Main St' %>
+              <% end %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.fields_for :address_attributes do |af| %>
+                <%= af.label :address_line2, "Apt/Suite (optional)" %>
+                <%= af.text_field :address_line2, class: 'form-control' %>
+              <% end %>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <%= f.fields_for :address_attributes do |af| %>
+                  <%= af.label :city, "City" %>
+                  <%= af.text_field :city, class: 'form-control' %>
+                <% end %>
+              </div>
+              <div class="col-md-6 mb-3">
+                <%= f.fields_for :address_attributes do |af| %>
+                  <%= af.label :postal_code, "Postal Code" %>
+                  <%= af.text_field :postal_code, class: 'form-control' %>
+                <% end %>
+              </div>
+            </div>
+          </fieldset>
+
+          <%= f.submit "Place Order", class: 'btn btn-success btn-lg' %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Order Total</h3>
+        <table class="table">
+          <tr>
+            <td>Subtotal</td>
+            <td><strong><%= number_to_currency(@subtotal) %></strong></td>
+          </tr>
+          <tr id="tax-row-gst" style="display:none;">
+            <td>GST</td>
+            <td><span id="tax-gst">-</span></td>
+          </tr>
+          <tr id="tax-row-pst" style="display:none;">
+            <td>PST</td>
+            <td><span id="tax-pst">-</span></td>
+          </tr>
+          <tr id="tax-row-hst" style="display:none;">
+            <td>HST</td>
+            <td><span id="tax-hst">-</span></td>
+          </tr>
+          <tr style="border-top: 2px solid #dee2e6;">
+            <td><strong>Grand Total</strong></td>
+            <td><strong id="grand-total"><%= number_to_currency(@subtotal) %></strong></td>
+          </tr>
+        </table>
+
+        <script>
+          document.getElementById('province_id').addEventListener('change', function() {
+            const provinceId = this.value;
+            if (!provinceId) return;
+
+            const rates = {
+              <% @provinces.each do |p| %>
+                <%= p.id %>: { gst: <%= p.gst_rate %>, pst: <%= p.pst_rate %>, hst: <%= p.hst_rate %> },
+              <% end %>
+            };
+
+            const rate = rates[provinceId];
+            if (!rate) return;
+
+            const subtotal = <%= @subtotal %>;
+            const gst = (subtotal * rate.gst).toFixed(2);
+            const pst = (subtotal * rate.pst).toFixed(2);
+            const hst = (subtotal * rate.hst).toFixed(2);
+            const total = (subtotal + parseFloat(gst) + parseFloat(pst) + parseFloat(hst)).toFixed(2);
+
+            document.getElementById('tax-gst').textContent = '$' + gst;
+            document.getElementById('tax-pst').textContent = '$' + pst;
+            document.getElementById('tax-hst').textContent = '$' + hst;
+            document.getElementById('grand-total').textContent = '$' + total;
+
+            document.getElementById('tax-row-gst').style.display = rate.gst > 0 ? 'table-row' : 'none';
+            document.getElementById('tax-row-pst').style.display = rate.pst > 0 ? 'table-row' : 'none';
+            document.getElementById('tax-row-hst').style.display = rate.hst > 0 ? 'table-row' : 'none';
+          });
+        </script>
+      </div>
+    </div>
+  <% end %>
+</div>

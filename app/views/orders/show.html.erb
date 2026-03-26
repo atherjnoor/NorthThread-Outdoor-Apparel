@@ -1,0 +1,75 @@
+<div class="container py-5">
+  <h1>Order #<%= @order.id %></h1>
+  <p class="text-muted">Status: <strong><%= @order.status %></strong></p>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Items</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |item| %>
+            <tr>
+              <td><%= item.product_name_snapshot %></td>
+              <td><%= number_to_currency(item.unit_price_snapshot) %></td>
+              <td><%= item.quantity %></td>
+              <td><%= number_to_currency(item.line_total) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3 class="mt-4">Shipping Address</h3>
+      <p>
+        <%= @order.address.address_line1 %><br>
+        <% if @order.address.address_line2.present? %>
+          <%= @order.address.address_line2 %><br>
+        <% end %>
+        <%= @order.address.city %>, <%= @order.address.province.abbreviation %><br>
+        <%= @order.address.postal_code %>
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Order Total</h3>
+      <table class="table">
+        <tr>
+          <td>Subtotal</td>
+          <td><strong><%= number_to_currency(@order.subtotal) %></strong></td>
+        </tr>
+        <% if @order.gst_amount > 0 %>
+          <tr>
+            <td>GST</td>
+            <td><%= number_to_currency(@order.gst_amount) %></td>
+          </tr>
+        <% end %>
+        <% if @order.pst_amount > 0 %>
+          <tr>
+            <td>PST</td>
+            <td><%= number_to_currency(@order.pst_amount) %></td>
+          </tr>
+        <% end %>
+        <% if @order.hst_amount > 0 %>
+          <tr>
+            <td>HST</td>
+            <td><%= number_to_currency(@order.hst_amount) %></td>
+          </tr>
+        <% end %>
+        <tr style="border-top: 2px solid #dee2e6;">
+          <td><strong>Grand Total</strong></td>
+          <td><strong><%= number_to_currency(@order.grand_total) %></strong></td>
+        </tr>
+      </table>
+
+      <%= link_to 'Back to orders', orders_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'Continue shopping', products_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

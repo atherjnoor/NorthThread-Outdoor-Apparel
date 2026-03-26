@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resource :cart, only: [:show, :create, :update, :destroy]
+  resource :checkout, only: [:show, :create]
+  resources :orders, only: [:index, :show]
   get '/pages/:slug', to: 'pages#show', as: :page
 
   root to: 'products#index'
