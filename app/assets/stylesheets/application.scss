@@ -1,0 +1,52 @@
+$primary-color: #1b365d;
+$secondary-color: #708090;
+$font-stack: 'Helvetica Neue', Arial, sans-serif;
+$border-radius: 0.35rem;
+
+@import "bootstrap";
+
+%btn-style {
+  border-radius: $border-radius;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: $font-stack;
+  background-color: #f8f9fa;
+  color: #1f2937;
+}
+
+.navbar {
+  background-color: $primary-color !important;
+  .nav-link {
+    color: #f8f9fa !important;
+    &:hover {
+      color: #fee3b3 !important;
+    }
+  }
+}
+
+.product-card {
+  border-radius: $border-radius;
+  box-shadow: 0 0.5rem 1rem rgba(11, 21, 38, 0.12);
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .btn {
+    @extend %btn-style;
+    background-color: $secondary-color;
+    border: none;
+  }
+}
+
+.cart-summary {
+  background: #ffffff;
+  padding: (1rem + 0.25rem);
+  border: 1px solid #dee2e6;
+  border-radius: $border-radius;
+}
+
+.container {
+  max-width: 1200px;
+}
