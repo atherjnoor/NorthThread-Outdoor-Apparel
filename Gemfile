@@ -19,7 +19,7 @@ gem "jbuilder"
 gem 'devise'
 gem 'activeadmin'
 gem 'kaminari'
-gem 'sass-rails'
+gem 'sassc-rails'
 gem 'bootstrap', '~> 5.3'
 gem 'aws-sdk-s3', require: false
 
