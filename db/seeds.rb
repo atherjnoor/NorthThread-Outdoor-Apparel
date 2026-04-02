@@ -764,10 +764,35 @@ products_data.each do |product_attrs|
   end
 end
 
-AdminUser.find_or_create_by!(email: 'admin@norththread.ca') do |admin|
-  admin.password = 'password123'
-  admin.password_confirmation = 'password123'
+# Ensure at least 100 products in seeds (requirement 1.6)
+required_count = 100
+if Product.count < required_count
+  categories = Category.all.to_a
+  (required_count - Product.count).times do |i|
+    name = "NorthThread Auto Product #{i + 1}"
+    product = Product.find_or_initialize_by(name: name)
+    category = categories[i % categories.size]
+
+    product.description = "Automated seed product #{i + 1} - high quality winter outdoor gear."
+    product.price = (49.99 + i % 15 * 10)
+    product.stock_quantity = 20 + (i % 80)
+    product.on_sale = (i % 4 == 0)
+    product.sale_price = product.on_sale ? (product.price * 0.8).round(2) : nil
+    product.save!(validate: false)
+
+    unless product.categories.include?(category)
+      product.categories << category
+    end
+  end
 end
+
+admin = AdminUser.find_or_initialize_by(email: 'admin@norththread.ca')
+admin.username ||= 'admin'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.save!
+
+# For a direct username login (accepts username or email): username=admin password=password
 
 Page.find_or_create_by!(slug: 'about') do |page|
   page.title = 'About NorthThread'

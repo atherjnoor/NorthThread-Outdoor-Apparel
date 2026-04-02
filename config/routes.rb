@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :admin_users, ActiveAdmin::Devise.config.merge(authentication_keys: [:login])
   ActiveAdmin.routes(self)
 
   devise_for :users
