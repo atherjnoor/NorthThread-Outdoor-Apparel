@@ -3,6 +3,8 @@ ActiveAdmin.register Page do
 
   permit_params :title, :body
 
+  menu label: "Website Pages", priority: 2
+
   controller do
     def scoped_collection
       super.where(slug: ["about", "contact"])
@@ -19,17 +21,36 @@ ActiveAdmin.register Page do
   end
 
   index do
+    selectable_column
     id_column
     column :slug
     column :title
+    column :body do |page|
+      truncate(page.body, length: 80)
+    end
+    column :updated_at
     actions
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :slug
+      row :title
+      row :body do |page|
+        simple_format(page.body)
+      end
+      row :created_at
+      row :updated_at
+    end
+    active_admin_comments
+  end
+
   form do |f|
-    f.semantic_errors
-    f.inputs do
-      f.input :title
-      f.input :body, as: :text
+    f.inputs "Page Details" do
+      f.input :slug, input_html: { disabled: true }, hint: "Page slug (fixed): #{f.object.slug}"
+      f.input :title, label: "Page Title"
+      f.input :body, as: :text, label: "Page Content", input_html: { rows: 20, class: "form-control" }, hint: "Plain text formatting. This content is displayed on the public website."
     end
     f.actions
   end

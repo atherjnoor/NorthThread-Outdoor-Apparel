@@ -1,4 +1,4 @@
-require 'ostruct'
+require "ostruct"
 
 class CheckoutController < ApplicationController
   before_action :authenticate_user!
@@ -7,7 +7,7 @@ class CheckoutController < ApplicationController
   def show
     @provinces = Province.all.order(:name)
     if @cart.empty?
-      redirect_to products_path, alert: 'Your cart is empty.'
+      redirect_to products_path, alert: "Your cart is empty."
       return
     end
 
@@ -24,7 +24,7 @@ class CheckoutController < ApplicationController
 
   def create
     if @cart.empty?
-      redirect_to products_path, alert: 'Your cart is empty.'
+      redirect_to products_path, alert: "Your cart is empty."
       return
     end
 
@@ -32,7 +32,7 @@ class CheckoutController < ApplicationController
     address = create_or_use_address(province)
 
     unless address.save
-      redirect_back(fallback_location: checkout_path, alert: address.errors.full_messages.join(', '))
+      redirect_back(fallback_location: checkout_path, alert: address.errors.full_messages.join(", "))
       return
     end
 
@@ -51,7 +51,7 @@ class CheckoutController < ApplicationController
     order = Order.new(
       user_id: current_user.id,
       address_id: address.id,
-      status: 'new',
+      status: "new",
       province_snapshot: province.name,
       gst_rate_snapshot: province.gst_rate,
       pst_rate_snapshot: province.pst_rate,
@@ -79,9 +79,9 @@ class CheckoutController < ApplicationController
       OrderMailer.order_confirmation(order).deliver_later
 
       session[:cart] = {}
-      redirect_to order_path(order), notice: 'Order created successfully!'
+      redirect_to order_path(order), notice: "Order created successfully!"
     else
-      redirect_back(fallback_location: checkout_path, alert: order.errors.full_messages.join(', '))
+      redirect_back(fallback_location: checkout_path, alert: order.errors.full_messages.join(", "))
     end
   end
 
@@ -93,7 +93,7 @@ class CheckoutController < ApplicationController
   end
 
   def checkout_params
-    params.require(:order).permit(:province_id, address_attributes: [:address_line1, :address_line2, :city, :postal_code, :is_default])
+    params.require(:order).permit(:province_id, address_attributes: [ :address_line1, :address_line2, :city, :postal_code, :is_default ])
   end
 
   def create_or_use_address(province)
