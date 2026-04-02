@@ -11,7 +11,7 @@ class AdminUser < ApplicationRecord
     login = conditions.delete(:login)&.downcase
 
     if login
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login }]).first
+      where(conditions.to_h).where([ "lower(username) = :value OR lower(email) = :value", { value: login } ]).first
     else
       where(conditions.to_h).first
     end

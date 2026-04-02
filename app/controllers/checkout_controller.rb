@@ -18,6 +18,11 @@ class CheckoutController < ApplicationController
     end
 
     @subtotal = @cart_items.sum { |item| item.product.display_price * item.quantity }
+
+    @discount_code = fetch_active_discount_code
+    @discount_amount = calculate_discount_amount(@subtotal, @discount_code)
+    @discounted_subtotal = (@subtotal - @discount_amount).round(2)
+
     @user_addresses = current_user.addresses
     @default_address = @user_addresses.find_by(is_default: true) || @user_addresses.first
   end
@@ -43,10 +48,14 @@ class CheckoutController < ApplicationController
     end
 
     subtotal = cart_items.sum { |item| item.product.display_price * item.quantity }
-    gst = (subtotal * province.gst_rate).round(2)
-    pst = (subtotal * province.pst_rate).round(2)
-    hst = (subtotal * province.hst_rate).round(2)
-    grand_total = subtotal + gst + pst + hst
+    discount_code = fetch_active_discount_code
+    discount_amount = calculate_discount_amount(subtotal, discount_code)
+    discounted_subtotal = (subtotal - discount_amount).round(2)
+
+    gst = (discounted_subtotal * province.gst_rate).round(2)
+    pst = (discounted_subtotal * province.pst_rate).round(2)
+    hst = (discounted_subtotal * province.hst_rate).round(2)
+    grand_total = discounted_subtotal + gst + pst + hst
 
     order = Order.new(
       user_id: current_user.id,
@@ -57,6 +66,10 @@ class CheckoutController < ApplicationController
       pst_rate_snapshot: province.pst_rate,
       hst_rate_snapshot: province.hst_rate,
       subtotal: subtotal,
+      discount_code: discount_code&.code,
+      discount_percentage: discount_code&.discount_percentage,
+      discount_amount: discount_amount,
+      discounted_subtotal: discounted_subtotal,
       gst_amount: gst,
       pst_amount: pst,
       hst_amount: hst,
@@ -79,6 +92,7 @@ class CheckoutController < ApplicationController
       OrderMailer.order_confirmation(order).deliver_later
 
       session[:cart] = {}
+      session.delete(:discount_code_id)
       redirect_to order_path(order), notice: "Order created successfully!"
     else
       redirect_back(fallback_location: checkout_path, alert: order.errors.full_messages.join(", "))
@@ -104,5 +118,22 @@ class CheckoutController < ApplicationController
     else
       Address.find(checkout_params[:province_id]) || current_user.addresses.first
     end
+  end
+
+  def fetch_active_discount_code
+    return nil unless session[:discount_code_id]
+
+    discount_code = DiscountCode.find_by(id: session[:discount_code_id])
+    return nil unless discount_code&.active?
+    return nil if discount_code.expires_at.present? && discount_code.expires_at <= Time.zone.now
+
+    discount_code
+  end
+
+  def calculate_discount_amount(subtotal, discount_code)
+    return 0.0 unless discount_code
+
+    amount = (subtotal * discount_code.discount_percentage.to_f / 100.0).round(2)
+    [ amount, subtotal ].min
   end
 end

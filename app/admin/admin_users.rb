@@ -15,7 +15,7 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.semantic_errors
     f.inputs do
-      f.input :username, hint: 'Use for username login (admin)'
+      f.input :username, hint: "Use for username login (admin)"
       f.input :email
       f.input :password
       f.input :password_confirmation

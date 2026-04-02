@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [ :show ]
 
   def index
     @categories = Category.all.order(:name)
@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.all
     @products = @category.products.order(created_at: :desc).page(params[:page]).per(12)
-    render 'products/index'
+    render "products/index"
   end
 
   private

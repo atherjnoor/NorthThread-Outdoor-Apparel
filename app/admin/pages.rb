@@ -1,5 +1,5 @@
 ActiveAdmin.register Page do
-  actions :all, except: [:new, :destroy]
+  actions :all, except: [ :new, :destroy ]
 
   permit_params :title, :body
 
@@ -7,7 +7,7 @@ ActiveAdmin.register Page do
 
   controller do
     def scoped_collection
-      super.where(slug: ["about", "contact"])
+      super.where(slug: [ "about", "contact" ])
     end
 
     def update

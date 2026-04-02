@@ -19,6 +19,9 @@ class Product < ApplicationRecord
     on_sale ? sale_price : price
   end
 
+  has_many :product_reviews, dependent: :destroy
+  has_many :wishlists, dependent: :destroy
+
   def related_products(limit = 4)
     Product
       .joins(:categories)
@@ -26,5 +29,15 @@ class Product < ApplicationRecord
       .where.not(id: id)
       .distinct
       .limit(limit)
+  end
+
+  def average_rating
+    ratings = product_reviews.pluck(:rating).compact
+    return nil if ratings.empty?
+    (ratings.sum.to_f / ratings.size).round(2)
+  end
+
+  def reviews_count
+    product_reviews.count
   end
 end

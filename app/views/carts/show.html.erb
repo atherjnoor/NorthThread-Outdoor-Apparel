@@ -35,13 +35,36 @@
       </tbody>
     </table>
 
-    <div class="text-end mt-4">
-      <h4>Subtotal: <%= number_to_currency(@subtotal) %></h4>
-      <% if user_signed_in? %>
-        <%= link_to 'Proceed to Checkout', checkout_path, class: 'btn btn-success btn-lg mt-3' %>
-      <% else %>
-        <p class="mt-3"><%= link_to 'Sign in to checkout', new_user_session_path, class: 'btn btn-success btn-lg' %></p>
-      <% end %>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h5>Discount Code</h5>
+        <%= form_with url: discount_codes_path, method: :post, local: true do |f| %>
+          <div class="input-group mb-3">
+            <%= f.text_field :code, name: :code, placeholder: 'Enter discount code', class: 'form-control' %>
+            <button type="submit" class="btn btn-outline-secondary">Apply</button>
+          </div>
+        <% end %>
+
+        <% if session[:discount_code_id] %>
+          <% active_discount = DiscountCode.find_by(id: session[:discount_code_id]) %>
+          <% if active_discount && active_discount.active? && (active_discount.expires_at.nil? || active_discount.expires_at > Time.zone.now) %>
+            <div class="alert alert-success mt-2">
+              Applied discount: <strong><%= active_discount.code %></strong> - <%= active_discount.discount_percentage %>% off
+            </div>
+          <% else %>
+            <div class="alert alert-warning mt-2">Discount code no longer valid.</div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 text-end">
+        <h4>Subtotal: <%= number_to_currency(@subtotal) %></h4>
+        <% if user_signed_in? %>
+          <%= link_to 'Proceed to Checkout', checkout_path, class: 'btn btn-success btn-lg mt-3' %>
+        <% else %>
+          <p class="mt-3"><%= link_to 'Sign in to checkout', new_user_session_path, class: 'btn btn-success btn-lg' %></p>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

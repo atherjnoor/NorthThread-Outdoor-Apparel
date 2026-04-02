@@ -100,7 +100,7 @@ products_data = [
     stock_quantity: 40,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Frostline Waterproof Shell',
@@ -109,7 +109,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: true,
     sale_price: 215.00,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Northwind Softshell Pants',
@@ -118,7 +118,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats', 'Mid-Layers']
+    categories: [ 'Jackets & Coats', 'Mid-Layers' ]
   },
   {
     name: 'Blizzard Extreme Winter Coat',
@@ -127,7 +127,7 @@ products_data = [
     stock_quantity: 25,
     on_sale: true,
     sale_price: 379.99,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Snowpeak Utility Jacket',
@@ -136,7 +136,7 @@ products_data = [
     stock_quantity: 35,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Windbreak Technical Shell',
@@ -145,7 +145,7 @@ products_data = [
     stock_quantity: 60,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Glacier Guard Winter Trousers',
@@ -154,7 +154,7 @@ products_data = [
     stock_quantity: 45,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Thermal Hybrid Jacket',
@@ -163,7 +163,7 @@ products_data = [
     stock_quantity: 55,
     on_sale: true,
     sale_price: 215.00,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Urban Winter Parka',
@@ -172,7 +172,7 @@ products_data = [
     stock_quantity: 40,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Everest Expedition Coat',
@@ -181,7 +181,7 @@ products_data = [
     stock_quantity: 15,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Polar Pro Down Puffer',
@@ -190,7 +190,7 @@ products_data = [
     stock_quantity: 80,
     on_sale: true,
     sale_price: 119.99,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Storm Chaser Hardshell',
@@ -199,7 +199,7 @@ products_data = [
     stock_quantity: 35,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Insulated Workwear Jacket',
@@ -208,7 +208,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Trail Runner Winter Shell',
@@ -217,7 +217,7 @@ products_data = [
     stock_quantity: 45,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Vintage Wool Coat',
@@ -226,7 +226,7 @@ products_data = [
     stock_quantity: 20,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Compression Down Vest',
@@ -235,7 +235,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: true,
     sale_price: 99.99,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Avalanche Rescue Jacket',
@@ -244,7 +244,7 @@ products_data = [
     stock_quantity: 25,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Synthetic Alternative Parka',
@@ -253,7 +253,7 @@ products_data = [
     stock_quantity: 45,
     on_sale: true,
     sale_price: 239.00,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Professional Ski Jacket',
@@ -262,7 +262,7 @@ products_data = [
     stock_quantity: 30,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   {
     name: 'Emergency Survival Parka',
@@ -271,7 +271,7 @@ products_data = [
     stock_quantity: 35,
     on_sale: false,
     sale_price: nil,
-    categories: ['Jackets & Coats']
+    categories: [ 'Jackets & Coats' ]
   },
   # Base Layers (20+ products)
   {
@@ -281,7 +281,7 @@ products_data = [
     stock_quantity: 120,
     on_sale: true,
     sale_price: 74.00,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Aurora Thermal Base Layer Legging',
@@ -290,7 +290,7 @@ products_data = [
     stock_quantity: 100,
     on_sale: true,
     sale_price: 55.00,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Thermal Silk Liner Base Layer',
@@ -299,7 +299,7 @@ products_data = [
     stock_quantity: 80,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Heavyweight Fleece Base Layer',
@@ -308,7 +308,7 @@ products_data = [
     stock_quantity: 60,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Performance Synthetic Base Layer Top',
@@ -317,7 +317,7 @@ products_data = [
     stock_quantity: 140,
     on_sale: true,
     sale_price: 49.99,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Expedition Weight Wool Leggings',
@@ -326,7 +326,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Lightweight Merino Bottoms',
@@ -335,7 +335,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Extreme Cold Base Layer Suit',
@@ -344,7 +344,7 @@ products_data = [
     stock_quantity: 35,
     on_sale: true,
     sale_price: 144.00,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Bamboo Fiber Base Layer',
@@ -353,7 +353,7 @@ products_data = [
     stock_quantity: 85,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   {
     name: 'Hybrid Base Layer Top',
@@ -362,7 +362,7 @@ products_data = [
     stock_quantity: 65,
     on_sale: false,
     sale_price: nil,
-    categories: ['Base Layers']
+    categories: [ 'Base Layers' ]
   },
   # Mid-Layers (20+ products)
   {
@@ -372,7 +372,7 @@ products_data = [
     stock_quantity: 90,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Bison Down Vest',
@@ -381,7 +381,7 @@ products_data = [
     stock_quantity: 80,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers', 'Jackets & Coats']
+    categories: [ 'Mid-Layers', 'Jackets & Coats' ]
   },
   {
     name: 'Thermal Fleece Hoody',
@@ -390,7 +390,7 @@ products_data = [
     stock_quantity: 75,
     on_sale: true,
     sale_price: 95.99,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Grid Fleece Mid-Layer',
@@ -399,7 +399,7 @@ products_data = [
     stock_quantity: 100,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Synthetic Insulated Vest',
@@ -408,7 +408,7 @@ products_data = [
     stock_quantity: 65,
     on_sale: true,
     sale_price: 119.99,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Fleece-Lined Softshell',
@@ -417,7 +417,7 @@ products_data = [
     stock_quantity: 55,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Polar Fleece Pants',
@@ -426,7 +426,7 @@ products_data = [
     stock_quantity: 80,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Merino Wool Cardigan',
@@ -435,7 +435,7 @@ products_data = [
     stock_quantity: 40,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Thermal Knit Sweater',
@@ -444,7 +444,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: true,
     sale_price: 99.00,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   {
     name: 'Expedition Mid-Layer Suit',
@@ -453,7 +453,7 @@ products_data = [
     stock_quantity: 25,
     on_sale: false,
     sale_price: nil,
-    categories: ['Mid-Layers']
+    categories: [ 'Mid-Layers' ]
   },
   # Footwear (10+ products)
   {
@@ -463,7 +463,7 @@ products_data = [
     stock_quantity: 60,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Urban Winter Boots',
@@ -472,7 +472,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: true,
     sale_price: 144.00,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Extreme Cold Mountain Boots',
@@ -481,7 +481,7 @@ products_data = [
     stock_quantity: 30,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Snowshoeing Insulated Boots',
@@ -490,7 +490,7 @@ products_data = [
     stock_quantity: 45,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Ice Climbing Boot',
@@ -499,7 +499,7 @@ products_data = [
     stock_quantity: 20,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Lightweight Trail Runner Boots',
@@ -508,7 +508,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: true,
     sale_price: 152.00,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Work Boot Insulated',
@@ -517,7 +517,7 @@ products_data = [
     stock_quantity: 55,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   {
     name: 'Casual Winter Sneakers',
@@ -526,7 +526,7 @@ products_data = [
     stock_quantity: 90,
     on_sale: false,
     sale_price: nil,
-    categories: ['Footwear']
+    categories: [ 'Footwear' ]
   },
   # Accessories (25+ products)
   {
@@ -536,7 +536,7 @@ products_data = [
     stock_quantity: 180,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Prairie Ridge Beanie',
@@ -545,7 +545,7 @@ products_data = [
     stock_quantity: 220,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Tundra Trek Sock Bundle',
@@ -554,7 +554,7 @@ products_data = [
     stock_quantity: 150,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Icebreaker Insulated Mitts',
@@ -563,7 +563,7 @@ products_data = [
     stock_quantity: 140,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Thermal Neck Gaiter',
@@ -572,7 +572,7 @@ products_data = [
     stock_quantity: 250,
     on_sale: true,
     sale_price: 17.99,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Insulated Face Mask',
@@ -581,7 +581,7 @@ products_data = [
     stock_quantity: 300,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Wool Blend Scarf',
@@ -590,7 +590,7 @@ products_data = [
     stock_quantity: 100,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Merino Wool Beanie',
@@ -599,7 +599,7 @@ products_data = [
     stock_quantity: 130,
     on_sale: true,
     sale_price: 41.00,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Hand Warmer Pouches',
@@ -608,7 +608,7 @@ products_data = [
     stock_quantity: 500,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Leather Work Gloves',
@@ -617,7 +617,7 @@ products_data = [
     stock_quantity: 75,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Expedition Gaiters',
@@ -626,7 +626,7 @@ products_data = [
     stock_quantity: 120,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Thermal Knee Socks',
@@ -635,7 +635,7 @@ products_data = [
     stock_quantity: 180,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Insulated Goggles',
@@ -644,7 +644,7 @@ products_data = [
     stock_quantity: 60,
     on_sale: true,
     sale_price: 72.00,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Balaclavas Full Coverage',
@@ -653,7 +653,7 @@ products_data = [
     stock_quantity: 90,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Windproof Ear Warmer',
@@ -662,7 +662,7 @@ products_data = [
     stock_quantity: 200,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Thermal Compression Leggings',
@@ -671,7 +671,7 @@ products_data = [
     stock_quantity: 85,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Merino Glove Liners',
@@ -680,7 +680,7 @@ products_data = [
     stock_quantity: 160,
     on_sale: true,
     sale_price: 27.99,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Expedition Sock Combo',
@@ -689,7 +689,7 @@ products_data = [
     stock_quantity: 50,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Insulated Boot Covers',
@@ -698,7 +698,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: true,
     sale_price: 39.99,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Thermal Underwear Set',
@@ -707,7 +707,7 @@ products_data = [
     stock_quantity: 80,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Anti-Fog Goggles Spray',
@@ -716,7 +716,7 @@ products_data = [
     stock_quantity: 400,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Insulated Backpack',
@@ -725,7 +725,7 @@ products_data = [
     stock_quantity: 40,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Winter Running Belt',
@@ -734,7 +734,7 @@ products_data = [
     stock_quantity: 70,
     on_sale: false,
     sale_price: nil,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   },
   {
     name: 'Thermal Emergency Kit',
@@ -743,7 +743,7 @@ products_data = [
     stock_quantity: 60,
     on_sale: true,
     sale_price: 31.99,
-    categories: ['Accessories']
+    categories: [ 'Accessories' ]
   }
 ]
 
@@ -806,3 +806,5 @@ Page.find_or_create_by!(slug: 'contact') do |page|
   page.updated_at = Time.current
 end
 
+puts "\n✓ Database seeded successfully!"
+puts "To add product images, run: bundle exec rake seed:attach_images"

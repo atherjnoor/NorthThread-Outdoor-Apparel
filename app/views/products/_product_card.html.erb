@@ -3,6 +3,10 @@
     <%= link_to product_path(product) do %>
       <%= image_tag product.images.first.variant(resize_to_limit: [350,250]), class: 'card-img-top', alt: product.name %>
     <% end %>
+  <% else %>
+    <%= link_to product_path(product) do %>
+      <%= image_tag(product_image_url(product), class: 'card-img-top', alt: product.name, loading: 'lazy') %>
+    <% end %>
   <% end %>
   <div class="card-body d-flex flex-column">
     <h5 class="card-title"><%= link_to product.name, product_path(product), class: 'text-decoration-none text-dark' %></h5>

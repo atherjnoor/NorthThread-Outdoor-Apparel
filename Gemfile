@@ -16,12 +16,12 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-gem 'devise'
-gem 'activeadmin'
-gem 'kaminari'
-gem 'sassc-rails'
-gem 'bootstrap', '~> 5.3'
-gem 'aws-sdk-s3', require: false
+gem "devise"
+gem "activeadmin"
+gem "kaminari"
+gem "sassc-rails"
+gem "bootstrap", "~> 5.3"
+gem "aws-sdk-s3", require: false
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

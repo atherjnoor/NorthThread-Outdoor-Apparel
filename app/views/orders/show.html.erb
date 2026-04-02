@@ -44,6 +44,16 @@
           <td>Subtotal</td>
           <td><strong><%= number_to_currency(@order.subtotal) %></strong></td>
         </tr>
+        <% if @order.discount_amount.to_f > 0 %>
+          <tr>
+            <td>Discount (<%= @order.discount_code %>)</td>
+            <td><strong>-<%= number_to_currency(@order.discount_amount) %></strong></td>
+          </tr>
+          <tr>
+            <td>Discounted Subtotal</td>
+            <td><strong><%= number_to_currency(@order.discounted_subtotal) %></strong></td>
+          </tr>
+        <% end %>
         <% if @order.gst_amount > 0 %>
           <tr>
             <td>GST</td>
@@ -68,8 +78,27 @@
         </tr>
       </table>
 
-      <%= link_to 'Back to orders', orders_path, class: 'btn btn-outline-secondary' %>
-      <%= link_to 'Continue shopping', products_path, class: 'btn btn-primary' %>
+      <% if @order.status == 'new' %>
+        <div class="alert alert-warning mt-3">
+          <strong>Payment Required</strong><br>
+          This order is pending payment. Please complete the payment to proceed.
+        </div>
+        <%= link_to 'Proceed to Payment', new_order_payment_path(@order), class: 'btn btn-success btn-lg w-100 mt-2' %>
+      <% elsif @order.status == 'paid' %>
+        <div class="alert alert-success mt-3">
+          <strong>✓ Payment Confirmed</strong><br>
+          Payment ID: <%= @order.stripe_payment_id %><br>
+          Your order is being prepared for shipment.
+        </div>
+      <% elsif @order.status == 'shipped' %>
+        <div class="alert alert-info mt-3">
+          <strong>✓ Order Shipped</strong><br>
+          Your order is on its way!
+        </div>
+      <% end %>
+
+      <%= link_to 'Back to orders', orders_path, class: 'btn btn-outline-secondary mt-2' %>
+      <%= link_to 'Continue shopping', products_path, class: 'btn btn-primary mt-2' %>
     </div>
   </div>
 </div>

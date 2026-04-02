@@ -43,4 +43,34 @@ body {
   border-radius: $border-radius;
 }
 
-.container { max-width: 1200px; }
+..container { max-width: 1200px; }
+
+/* Kaminari pagination enhancements */
+.pagination {
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.page-item + .page-item {
+  margin-left: 0.25rem;
+}
+
+.page-link {
+  color: #1b365d;
+  border-radius: 0.35rem;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link,
+.page-link:hover {
+  background-color: #1b365d;
+  border-color: #1b365d;
+  color: #ffffff;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+

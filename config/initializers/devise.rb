@@ -1,12 +1,12 @@
 Devise.setup do |config|
-  config.mailer_sender = 'no-reply@norththread.ca'
+  config.mailer_sender = "no-reply@norththread.ca"
 
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
-  config.case_insensitive_keys = [:email]
-  config.strip_whitespace_keys = [:email]
+  config.case_insensitive_keys = [ :email ]
+  config.strip_whitespace_keys = [ :email ]
 
-  config.skip_session_storage = [:http_auth]
+  config.skip_session_storage = [ :http_auth ]
 
   config.reconfirmable = true
 

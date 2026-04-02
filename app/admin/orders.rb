@@ -9,14 +9,14 @@ ActiveAdmin.register Order do
     column :grand_total
     column :status do |order|
       case order.status
-      when 'new'
-        tag.span 'NEW', class: 'badge bg-warning'
-      when 'paid'
-        tag.span 'PAID', class: 'badge bg-success'
-      when 'shipped'
-        tag.span 'SHIPPED', class: 'badge bg-info'
+      when "new"
+        tag.span "NEW", class: "badge bg-warning"
+      when "paid"
+        tag.span "PAID", class: "badge bg-success"
+      when "shipped"
+        tag.span "SHIPPED", class: "badge bg-info"
       else
-        tag.span order.status.upcase, class: 'badge bg-secondary'
+        tag.span order.status.upcase, class: "badge bg-secondary"
       end
     end
     actions
@@ -34,20 +34,20 @@ ActiveAdmin.register Order do
       row :hst_amount
       row :status do |order|
         case order.status
-        when 'new'
-          tag.span 'NEW', class: 'badge bg-warning'
-        when 'paid'
-          tag.span 'PAID', class: 'badge bg-success'
-        when 'shipped'
-          tag.span 'SHIPPED', class: 'badge bg-info'
+        when "new"
+          tag.span "NEW", class: "badge bg-warning"
+        when "paid"
+          tag.span "PAID", class: "badge bg-success"
+        when "shipped"
+          tag.span "SHIPPED", class: "badge bg-info"
         else
-          tag.span order.status.upcase, class: 'badge bg-secondary'
+          tag.span order.status.upcase, class: "badge bg-secondary"
         end
       end
       row :address
     end
 
-    panel 'Order Items' do
+    panel "Order Items" do
       table_for order.order_items do
         column :product_name_snapshot
         column :unit_price_snapshot
@@ -59,7 +59,7 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs do
-      f.input :status, as: :select, collection: ['new', 'paid', 'shipped']
+      f.input :status, as: :select, collection: [ "new", "paid", "shipped" ]
     end
     f.actions
   end

@@ -1,0 +1,28 @@
+<div class="container py-4">
+  <h1>My Wishlist</h1>
+
+  <% if @wishlists.empty? %>
+    <p>Your wishlist is empty. <%= link_to 'Add items', products_path %>.</p>
+  <% else %>
+    <div class="row g-4">
+      <% @wishlists.each do |entry| %>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <% if entry.product.images.attached? %>
+              <%= image_tag entry.product.images.first.variant(resize_to_limit: [400, 300]), class: 'card-img-top' %>
+            <% else %>
+              <div class="card-img-top placeholder bg-light p-5 text-center">No image</div>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to entry.product.name, product_path(entry.product) %></h5>
+              <p><%= number_to_currency(entry.product.display_price) %></p>
+              <%= form_with url: wishlist_path(entry), method: :delete, local: true do |f| %>
+                <%= f.submit 'Remove from wishlist', class: 'btn btn-outline-danger btn-sm' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

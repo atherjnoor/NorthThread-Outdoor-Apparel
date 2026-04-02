@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_address, only: [:edit, :update, :destroy]
+  before_action :set_address, only: [ :edit, :update, :destroy ]
 
   def index
     @addresses = current_user.addresses
@@ -14,7 +14,7 @@ class AddressesController < ApplicationController
   def create
     @address = current_user.addresses.build(address_params)
     if @address.save
-      redirect_to addresses_path, notice: 'Address added successfully.'
+      redirect_to addresses_path, notice: "Address added successfully."
     else
       @provinces = Province.all.order(:name)
       render :new, status: :unprocessable_entity
@@ -27,7 +27,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to addresses_path, notice: 'Address updated successfully.'
+      redirect_to addresses_path, notice: "Address updated successfully."
     else
       @provinces = Province.all.order(:name)
       render :edit, status: :unprocessable_entity
@@ -36,7 +36,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address.destroy
-    redirect_to addresses_path, notice: 'Address removed.'
+    redirect_to addresses_path, notice: "Address removed."
   end
 
   private
@@ -47,7 +47,7 @@ class AddressesController < ApplicationController
   end
 
   def authorize_address!
-    redirect_to addresses_path, alert: 'Not authorized' unless @address.user_id == current_user.id
+    redirect_to addresses_path, alert: "Not authorized" unless @address.user_id == current_user.id
   end
 
   def address_params

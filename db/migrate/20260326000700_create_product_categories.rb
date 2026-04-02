@@ -5,6 +5,6 @@ class CreateProductCategories < ActiveRecord::Migration[8.1]
       t.references :category, null: false, foreign_key: true
     end
 
-    add_index :product_categories, [:product_id, :category_id], unique: true
+    add_index :product_categories, [ :product_id, :category_id ], unique: true
   end
 end

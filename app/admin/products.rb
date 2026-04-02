@@ -22,7 +22,7 @@ ActiveAdmin.register Product do
         ul do
           f.object.images.each do |img|
             li do
-              image_tag url_for(img.variant(resize_to_limit: [100, 100])), alt: img.filename.to_s
+              image_tag url_for(img.variant(resize_to_limit: [ 100, 100 ])), alt: img.filename.to_s
             end
           end
         end
@@ -56,7 +56,7 @@ ActiveAdmin.register Product do
         product.categories.map(&:name).join(", ")
       end
       row :images do |product|
-        product.images.map { |img| image_tag url_for(img.variant(resize_to_limit: [200,200])) }.join(" ").html_safe
+        product.images.map { |img| image_tag url_for(img.variant(resize_to_limit: [ 200, 200 ])) }.join(" ").html_safe
       end
     end
   end

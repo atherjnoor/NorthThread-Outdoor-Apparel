@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_02_152156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -74,6 +74,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "discount_codes", force: :cascade do |t|
+    t.boolean "active"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.integer "discount_percentage"
+    t.datetime "expires_at"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.decimal "line_total", precision: 10, scale: 2, null: false
     t.bigint "order_id", null: false
@@ -89,6 +98,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
   create_table "orders", force: :cascade do |t|
     t.bigint "address_id", null: false
     t.datetime "created_at", null: false
+    t.decimal "discount_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.string "discount_code"
+    t.integer "discount_percentage"
+    t.decimal "discounted_subtotal", precision: 10, scale: 2, default: "0.0", null: false
     t.decimal "grand_total", precision: 10, scale: 2
     t.decimal "gst_amount", precision: 10, scale: 2
     t.decimal "gst_rate_snapshot", precision: 5, scale: 3
@@ -121,6 +134,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
     t.index ["category_id"], name: "index_product_categories_on_category_id"
     t.index ["product_id", "category_id"], name: "index_product_categories_on_product_id_and_category_id", unique: true
     t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
+  create_table "product_reviews", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.bigint "product_id", null: false
+    t.integer "rating"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.index ["user_id"], name: "index_product_reviews_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -162,6 +186,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "product_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["product_id"], name: "index_wishlists_on_product_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "provinces"
   add_foreign_key "addresses", "users"
@@ -171,4 +204,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_150723) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
+  add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "users"
+  add_foreign_key "wishlists", "products"
+  add_foreign_key "wishlists", "users"
 end

@@ -32,7 +32,7 @@
         <%= form_with url: checkout_path, method: :post, local: true do |f| %>
           <div class="mb-3">
             <%= f.label :province_id, "Province" %>
-            <%= f.collection_select :province_id, @provinces, :id, :name, { prompt: 'Select a province' }, class: 'form-control' %>
+            <%= f.collection_select :province_id, @provinces, :id, :name, { prompt: 'Select a province' }, class: 'form-control', id: 'province-select' %>
           </div>
 
           <fieldset class="mb-3">
@@ -85,6 +85,21 @@
             <td>Subtotal</td>
             <td><strong><%= number_to_currency(@subtotal) %></strong></td>
           </tr>
+          <% if @discount_amount.to_f > 0 %>
+            <tr>
+              <td>Discount (<%= @discount_code.code if @discount_code %>)</td>
+              <td><strong>-<%= number_to_currency(@discount_amount) %></strong></td>
+            </tr>
+            <tr>
+              <td>Discounted Subtotal</td>
+              <td><strong><%= number_to_currency(@discounted_subtotal) %></strong></td>
+            </tr>
+          <% else %>
+            <tr>
+              <td>Discounted Subtotal</td>
+              <td><strong><%= number_to_currency(@discounted_subtotal || @subtotal) %></strong></td>
+            </tr>
+          <% end %>
           <tr id="tax-row-gst" style="display:none;">
             <td>GST</td>
             <td><span id="tax-gst">-</span></td>
@@ -99,7 +114,7 @@
           </tr>
           <tr style="border-top: 2px solid #dee2e6;">
             <td><strong>Grand Total</strong></td>
-            <td><strong id="grand-total"><%= number_to_currency(@subtotal) %></strong></td>
+            <td><strong id="grand-total"><%= number_to_currency(@discounted_subtotal || @subtotal) %></strong></td>
           </tr>
         </table>
 
@@ -117,7 +132,7 @@
             const rate = rates[provinceId];
             if (!rate) return;
 
-            const subtotal = <%= @subtotal %>;
+            const subtotal = <%= @discounted_subtotal || @subtotal %>;
             const gst = (subtotal * rate.gst).toFixed(2);
             const pst = (subtotal * rate.pst).toFixed(2);
             const hst = (subtotal * rate.hst).toFixed(2);
